@@ -1,0 +1,79 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class StreamingService
+class User
+abstract class Media
+class Movie
+class Series
+class Season
+class Episode
+class TextUI
+class FileIO
+
+
+class StreamingService {
++ static void main(String[] args)
++ start program
+}
+
+class TextUI{
+- Scanner scan
++ boolean promptBinary(String msg)
++ String promptText(String msg)
++ int promptNumeric(String msg)
++ ArrayList<String> promptChoice(ArrayList<String> options, int limit, String msg)
++ void displayMessage(String msg)
++ void displayList(ArrayList<String> list, String msg)
+}
+
+class FileIO{
++ void saveData(ArrayList<String> data, String path, String header)
++ ArrayList<String> readData(String path)
++ String[] readData(String path, int length)
+}
+
+class User {
++ void createUser()
++ void login()
+}
+
+
+
+abstract class Media{
+- String name
+- String releaseYear
+- String rating
+
++ void playMedia()
++ void saveMedia()
++ void removeMedia()
+}
+
+class Movie{
+}
+
+class Series{
+}
+
+
+
+StreamingService *-- User
+User *-- Media
+
+User *-- FileIO
+User *-- TextUI
+
+
+Media *-- Movie
+Media *-- Series
+Series *-- Season
+Season *-- Episode
+Category --> Movie
+Category --> Series
+
+
+
+
+
+@enduml
