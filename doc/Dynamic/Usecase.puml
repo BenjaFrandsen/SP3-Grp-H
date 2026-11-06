@@ -36,3 +36,5 @@ ChooseMedia --> MediaSaveHandler
 PlayMedia --> ChooseMedia
 MediaSaveHandler --> ChooseMedia
 @enduml
+
+samle search

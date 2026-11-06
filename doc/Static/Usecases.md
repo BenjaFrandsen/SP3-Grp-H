@@ -53,7 +53,7 @@ UC9 PlayMedia:
 The system shows "Title is now playing...” and adds the Media to the watched list.
 
 Rainy day:
-??? hvad sker der her? altså hvis Media er en series
+??? hvad sker der her? altså hvis Media er en series - Media not found
 
 UC10 MediaSaveHandler:
 Based on user input, the system either adds the Media to the saved list and confirms with a message.
@@ -68,3 +68,7 @@ The system stores the User data and closes the program.
 
 Rainy day:
 The system tells the user that the data was not saved.
+
+
+
+flyt userhandler og main menu
