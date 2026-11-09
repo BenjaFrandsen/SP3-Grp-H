@@ -6,7 +6,7 @@ class StreamingService {
 - ArrayList<Media> media
 - User currentUser
 - TextUI ui
-- FileIO io
+- FileIO io g
 
 + static void main(String[] args)
 + void startSession()
