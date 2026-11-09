@@ -1,20 +1,34 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class StreamingService
-class User
-abstract class Media
-class Movie
-class Series
-class Season
-class Episode
-class TextUI
-class FileIO
-
+!pragma layout smetana
 
 class StreamingService {
+- ArrayList<User> users
+- ArrayList<Media> media
+- User currentUser
+- TextUI ui
+- FileIO io g
+
 + static void main(String[] args)
-+ start program
++ void startSession()
+- void loadUsers()
+- void loadMedia()
+- void saveUsers()
+- void startMenu()
+- void login()
+- void createUser()
+- void mainMenu()
+- void searchByTitle()
+- void searchByCategory()
+- void showWatched()
+- void showSaved()
+- void chooseMedia(ArrayList<Media> list)
+- void mediaMenu(Media m)
+- void playMedia(Media m)
+- void saveMedia(Media m)
+- void removeMedia(Media m)
+- void endSession()
 }
 
 class TextUI{
@@ -34,45 +48,68 @@ class FileIO{
 }
 
 class User {
-+ void createUser()
-+ void login()
+- String username
+- String password
+- ArrayList<Media> watched
+- ArrayList<Media> saved
+
++ String getUsername()
++ boolean checkPassword(String password)
++ void addToWatched(Media m)
++ boolean addToSaved(Media m)
++ boolean removeFromSaved(Media m)
++ ArrayList<Media> getWatched()
++ ArrayList<Media> getSaved()
 }
 
-
-
 abstract class Media{
-- String name
-- String releaseYear
-- String rating
+- String title
+- int releaseYear
+- double rating
+- ArrayList<String> categories
 
-+ void playMedia()
-+ void saveMedia()
-+ void removeMedia()
++ String getTitle()
++ int getReleaseYear()
++ double getRating()
++ ArrayList<String> getCategories()
++ boolean hasCategory(String category)
++ String toString()
 }
 
 class Movie{
 }
 
 class Series{
+-int endYear
+- ArrayList<Season> seasons
+
++ ArrayList<Season> getSeasons()
++ String toString()
 }
 
+class Season{
+- int seasonNumber
+- ArrayList<Episode> episodes
 
++ int getSeasonNumber()
++ ArrayList<Episode> getEpisodes()
+}
 
-StreamingService *-- User
-User *-- Media
+class Episode{
+- int episodeNumber
 
-User *-- FileIO
-User *-- TextUI
++ int getEpisodeNumber()
+}
 
+StreamingService *-- TextUI
+StreamingService *-- FileIO
+StreamingService *-- "*" User
+StreamingService *-- "*" Media
+User o-- "*" Media : watched / saved
 
-Media *-- Movie
-Media *-- Series
-Series *-- Season
-Season *-- Episode
-
-
-
-
-
+Media <|-- Movie
+Media <|-- Series
+Series *-- "1..*" Season
+Season *-- "1..*" Episode
 
 @enduml

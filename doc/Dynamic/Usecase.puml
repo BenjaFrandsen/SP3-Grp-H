@@ -1,4 +1,6 @@
 @startuml
+!pragma layout smetana
+
 actor user
 
 usecase StartProgram
