@@ -5,7 +5,7 @@ public class Main {
     public void main() {
 
         //Test af episode og Season
-        /*
+
         ArrayList<Episode> episodes = new ArrayList<>();
 
         for (int i = 1; i <= 7; i++) {
@@ -20,7 +20,7 @@ public class Main {
             System.out.println("Episode" + e.getEpisodeNumber());
         }
 
-         */
+
 
 
     }
